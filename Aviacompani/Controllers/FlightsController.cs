@@ -25,7 +25,7 @@ namespace Aviacompani.Controllers
                 return NotFound();
             return Ok(clo);
         }
-        [HttpGet]
+        [HttpPost]
         public IActionResult Add(Flight flight)
         {
             var db = new KiselevContext();

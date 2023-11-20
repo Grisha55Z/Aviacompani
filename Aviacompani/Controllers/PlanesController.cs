@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Aviacompani.Controllers
 {
     [ApiController]
-    [Route("/Planes")]
-    public class FlightsController : ControllerBase
+    [Route("/planes")]
+    public class PlanesController : ControllerBase
     {
         [HttpGet]
 
@@ -25,7 +25,16 @@ namespace Aviacompani.Controllers
                 return NotFound();
             return Ok(clo);
         }
-        [HttpGet]
+        [HttpPost]
+        public IActionResult Add(Plane planes) 
+        {
+            var db = new KiselevContext();
+            db.Planes.Add(planes);
+            db.SaveChanges();
+            return Ok(db); 
+        }
+
+        [HttpPut]
         public IActionResult Edit(Plane clis)
         {
             var db = new KiselevContext();
@@ -42,5 +51,6 @@ namespace Aviacompani.Controllers
                 return NotFound();
             return Ok(Planes);
         }
+        
     }
 }

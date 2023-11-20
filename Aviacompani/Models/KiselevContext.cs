@@ -32,9 +32,15 @@ public partial class KiselevContext : DbContext
             entity.ToTable("Flight", "Kiselev");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Flight1)
+            entity.Property(e => e.Datetime)
+                .HasColumnType("time")
+                .HasColumnName("datetime");
+            entity.Property(e => e.Namber)
                 .HasMaxLength(100)
-                .HasColumnName("Flight");
+                .HasColumnName("namber");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .HasColumnName("name");
         });
 
         modelBuilder.Entity<Plane>(entity =>
@@ -44,7 +50,15 @@ public partial class KiselevContext : DbContext
             entity.ToTable("Planes", "Kiselev");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Planes).HasMaxLength(100);
+            entity.Property(e => e.Capacity)
+                .HasMaxLength(100)
+                .HasColumnName("capacity");
+            entity.Property(e => e.Name)
+                .HasMaxLength(100)
+                .HasColumnName("name");
+            entity.Property(e => e.NumberOfPassengers)
+                .HasMaxLength(100)
+                .HasColumnName("number of passengers");
         });
 
         OnModelCreatingPartial(modelBuilder);
