@@ -38,18 +38,22 @@ namespace Aviacompani.Controllers
         public IActionResult Edit(Plane clis)
         {
             var db = new KiselevContext();
-            db.Planes.Add(clis);
+            db.Planes.Update(clis);
             db.SaveChanges();
             return Ok(clis);
         }
         [HttpDelete]
+        [Route("{id}")]
         public IActionResult Delete(int id)
         {
             var db = new KiselevContext();
-            var Planes = db.Planes.SingleOrDefault(s => s.Id ==id);
-            if (Planes == null)
+            var plane = db.Planes.SingleOrDefault(s => s.Id ==id);
+            if (plane == null)
                 return NotFound();
-            return Ok(Planes);
+            db.Planes.Remove(plane);
+            db.SaveChanges();
+
+            return Ok();
         }
         
     }

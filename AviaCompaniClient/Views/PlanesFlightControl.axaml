@@ -3,9 +3,9 @@
 			 xmlns:vm="using:AviaCompaniClient.ViewModels"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-			 x:DataType="vm:FlightPlanesControlViewModel"
+			 x:DataType="vm:PlanesFlightControlViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AviaCompaniClient.Views.FlightPlanesControl">
+             x:Class="AviaCompaniClient.Views.PlanesFlightControl">
 	<DockPanel>
 		<StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
 			<Button Command="{Binding Update}" Content="Обновить"/>
@@ -16,8 +16,8 @@
 		<StackPanel DockPanel.Dock="Bottom" >
 			<TextBlock Text="{Binding Message}"/>
 		</StackPanel>
-		<DataGrid ItemsSource="{Binding Flights}" AutoGenerateColumns="True" SelectedItem="{Binding SelectedFlight}">
-			
+		<DataGrid ItemsSource="{Binding Planes}" AutoGenerateColumns="True" SelectedItem="{Binding SelectedPlane}">
+
 		</DataGrid>
 	</DockPanel>
 </UserControl>

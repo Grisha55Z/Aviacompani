@@ -16,6 +16,13 @@ namespace AviaCompaniClient.ViewModels
 {
     public class FlightPlanesControlViewModel : ViewModelBase
     {
+        private string _message;
+        public string Message
+        {
+            get => _message;
+            set => this.RaiseAndSetIfChanged(ref _message, value);
+        }
+
         private Flight _selectedFlight;
         public Flight SelectedFlight
         {
@@ -39,7 +46,7 @@ namespace AviaCompaniClient.ViewModels
         }
         public FlightPlanesControlViewModel()
         {
-            client.BaseAddress = new Uri("https://localhost:7125/");
+            client.BaseAddress = new Uri("https://localhost:7125");
             Update();
         }
         public async Task Update()
@@ -61,7 +68,7 @@ namespace AviaCompaniClient.ViewModels
         public async Task Delete()
         {
             if (SelectedFlight == null) return;
-            var response = await client.DeleteAsync($"/courses/{SelectedFlight.Id}");
+            var response = await client.DeleteAsync($"/flights/{SelectedFlight.id}");
             if (!response.IsSuccessStatusCode)
             {
                 FlightName = "Ошибка удаления со стороны сервера";
@@ -94,16 +101,16 @@ namespace AviaCompaniClient.ViewModels
 
         public async Task Edit()
         {
-            var response = await client.PutAsJsonAsync($"/flight", SelectedFlight);
+            var response = await client.PutAsJsonAsync($"/flights", SelectedFlight);
             if (!response.IsSuccessStatusCode)
             {
-                FlightName = "Ошибка изминения со стороны сервера";
+                Message = "Ошибка изминения со стороны сервера";
                 return;
             }
             var content = await response.Content.ReadFromJsonAsync<Flight>();
             if (content == null)
             {
-                FlightName = "При изминении сервер отправил пустой ответ";
+                Message = "При изминении сервер отправил пустой ответ";
                 return;
             }
             SelectedFlight = content;

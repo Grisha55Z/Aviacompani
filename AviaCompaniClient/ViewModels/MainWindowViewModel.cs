@@ -1,9 +1,17 @@
-﻿namespace AviaCompaniClient.ViewModels
+﻿using AviaCompaniClient.Views;
+
+namespace AviaCompaniClient.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-#pragma warning disable CA1822 // Mark members as static
-        public string Greeting => "Welcome to Avalonia!";
-#pragma warning restore CA1822 // Mark members as static
+        public MainWindowViewModel() 
+        {
+            _FlightsUserControl = new FlightPlanesControl();
+            _FlightsUserControl.DataContext = new FlightPlanesControlViewModel();
+            _PlanesUserControl = new PlanesFlightControl();
+            _PlanesUserControl.DataContext = new PlanesFlightControlViewModel();
+        }
+        public FlightPlanesControl _FlightsUserControl { get; set; }
+        public PlanesFlightControl _PlanesUserControl { get; set; }
     }
 }

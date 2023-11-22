@@ -17,9 +17,11 @@
 
 	<TabControl>
 		<TabItem Header="Полеты">
+			<UserControl Content="{Binding _FlightsUserControl}"/>
 			
 		</TabItem>
 		<TabItem Header="Самолеты">
+			<UserControl Content="{Binding _PlanesUserControl}"/>
 			    
 		</TabItem>
 	</TabControl>
