@@ -16,6 +16,12 @@ namespace AviaCompaniClient.ViewModels
 {
     public class FlightPlanesControlViewModel : ViewModelBase
     {
+        private string _message;
+        public string Message
+        {
+            get => _message;
+            set => this.RaiseAndSetIfChanged(ref _message, value);
+        }
         private Flight _selectedFlight;
         public Flight SelectedFlight
         {
