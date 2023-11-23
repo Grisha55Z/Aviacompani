@@ -5,11 +5,11 @@ namespace Aviacompani.Models;
 
 public partial class Plane
 {
-    public int Id { get; set; }
+    public int id { get; set; }
 
-    public string? Name { get; set; }
+    public string? name { get; set; }
 
-    public string? Capacity { get; set; }
+    public string? capacity { get; set; }
 
-    public string? NumberOfPassengers { get; set; }
+    public string? numberOfPassengers { get; set; }
 }

@@ -20,7 +20,7 @@ namespace Aviacompani.Controllers
         public ActionResult GetById(int id)
         {
             var db = new KiselevContext();
-            var clo = db.Flights.SingleOrDefault(s => s.Id == id);
+            var clo = db.Flights.SingleOrDefault(s => s.id == id);
             if (clo == null)
                 return NotFound();
             return Ok(clo);
@@ -46,7 +46,7 @@ namespace Aviacompani.Controllers
         public IActionResult Delete(int id)
         {
             var db = new KiselevContext();
-            var flight = db.Flights.SingleOrDefault(s => s.Id == id);
+            var flight = db.Flights.SingleOrDefault(s => s.id == id);
             if (flight == null)
                 return NotFound();
             db.Flights.Remove(flight);
